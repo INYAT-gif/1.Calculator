@@ -1,6 +1,5 @@
 package se.inyat;
 
-
 import java.util.Scanner;
 
 public class SimpleCalculatorApp {
@@ -69,7 +68,7 @@ public class SimpleCalculatorApp {
         System.out.println("Enter a number:");
         double number1 = scanner.nextDouble();
 
-        System.out.println("Enter a number:");
+        System.out.println("Enter another number:");
         double number2 = scanner.nextDouble();
 
         return number1 + number2;
@@ -99,8 +98,16 @@ public class SimpleCalculatorApp {
     }
 
     public static double performDivision() {
-        // todo: needs completion
-        return 0.0;
+        double dividend = getDoubleNumber();
+        double divisor;
+        do {
+            divisor = getDoubleNumber();
+            if (divisor == 0) {
+                System.out.println("Error: Division by zero. Please enter a non-zero divisor.");
+            }
+        } while (divisor == 0); // Loop until a non-zero divisor is entered
+
+        return dividend / divisor;
     }
 
 
@@ -114,12 +121,6 @@ public class SimpleCalculatorApp {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want to continue? (1=yes, 0=no)");
         int option = scanner.nextInt();
-        if (option == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return option == 1;
     }
-
-
 }
